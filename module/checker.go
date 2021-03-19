@@ -1,18 +1,20 @@
-package checker
+package module
+
+import "github.com/liangyaopei/checker"
 
 // Checker is the representation of
 // validation object
 type Checker interface {
-	Add(rule Rule, prompt string)
+	Add(rule main.Rule, prompt string)
 	Check(param interface{}) (bool, string, string)
 }
 
 type ruleChecker struct {
-	rules   []Rule
+	rules   []main.Rule
 	prompts []string
 }
 
-func (c *ruleChecker) Add(rule Rule, prompt string) {
+func (c *ruleChecker) Add(rule main.Rule, prompt string) {
 	c.rules = append(c.rules, rule)
 	c.prompts = append(c.prompts, prompt)
 }

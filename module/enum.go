@@ -1,7 +1,8 @@
-package checker
+package module
 
 import (
 	"fmt"
+	"github.com/liangyaopei/checker"
 )
 
 type enumRuleString struct {
@@ -26,7 +27,7 @@ func (r enumRuleString) Check(param interface{}) (bool, string) {
 }
 
 // InStr checks if the filed is string and is in enum
-func InStr(filedExpr string, enum ...string) Rule {
+func InStr(filedExpr string, enum ...string) main.Rule {
 	set := make(map[string]struct{}, len(enum))
 	for i := 0; i < len(enum); i++ {
 		set[enum[i]] = struct{}{}
@@ -61,7 +62,7 @@ func (r enumRuleInt) Check(param interface{}) (bool, string) {
 }
 
 // InInt checks if the filed is int and is in enum
-func InInt(filedExpr string, enum ...int) Rule {
+func InInt(filedExpr string, enum ...int) main.Rule {
 	set := make(map[int]struct{}, len(enum))
 	for i := 0; i < len(enum); i++ {
 		set[enum[i]] = struct{}{}
@@ -96,7 +97,7 @@ func (r enumRuleUint) Check(param interface{}) (bool, string) {
 }
 
 // InUint checks if the filed is uint and is in enum
-func InUint(filedExpr string, enum ...uint) Rule {
+func InUint(filedExpr string, enum ...uint) main.Rule {
 	set := make(map[uint]struct{}, len(enum))
 	for i := 0; i < len(enum); i++ {
 		set[enum[i]] = struct{}{}
@@ -131,7 +132,7 @@ func (r enumRuleFloat) Check(param interface{}) (bool, string) {
 }
 
 // InFloat checks if the filed is float and is in enum
-func InFloat(filedExpr string, enum ...float64) Rule {
+func InFloat(filedExpr string, enum ...float64) main.Rule {
 	set := make(map[float64]struct{}, len(enum))
 	for i := 0; i < len(enum); i++ {
 		set[enum[i]] = struct{}{}

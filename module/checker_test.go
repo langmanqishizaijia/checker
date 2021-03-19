@@ -1,6 +1,7 @@
-package checker
+package module
 
 import (
+	"github.com/liangyaopei/checker"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -71,21 +72,21 @@ func getProfileChecker() Checker {
 
 	rule :=
 		And(
-			Length("Info.Name", 1, 20),
+			main.Length("Info.Name", 1, 20),
 			RangeInt("Info.Age", 18, 80),
-			Array("Companies",
+			main.Array("Companies",
 				And(
-					Length("Skills", 1, 3),
+					main.Length("Skills", 1, 3),
 					Or(
 						And(
 							EqStr("Position", "frontend"),
-							Array("Skills",
+							main.Array("Skills",
 								InStr("", "html", "css", "javascript"),
 							),
 						),
 						And(
 							EqStr("Position", "backend"),
-							Array("Skills",
+							main.Array("Skills",
 								InStr("", "C", "CPP", "Java", "Golang"),
 							),
 						)),
@@ -147,18 +148,18 @@ func TestField(t *testing.T) {
 		},
 	}
 	rule := And(
-		Email("Email"),
+		main.Email("Email"),
 		Field("Info",
 			Or(
 				And(
 					EqStr("Type", "range"),
-					Length("Range", 2, 2),
-					Array("Range", Time("", "2006-01-02")),
+					main.Length("Range", 2, 2),
+					main.Array("Range", main.Time("", "2006-01-02")),
 				),
 				And(
 					EqStr("Type", "last"),
 					InStr("Granularity", "day", "week", "month"),
-					Number("Unit"),
+					main.Number("Unit"),
 				),
 			),
 		),

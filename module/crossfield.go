@@ -1,7 +1,8 @@
-package checker
+package module
 
 import (
 	"fmt"
+	"github.com/liangyaopei/checker"
 	"reflect"
 	"time"
 )
@@ -133,7 +134,7 @@ func (r crossFieldCompareRule) Check(param interface{}) (bool, string) {
 
 // CrossComparable checks if left and right fields
 // are same types and satisfy the comparison operand
-func CrossComparable(fieldExprLeft string, fieldExprRight string, op operand) Rule {
+func CrossComparable(fieldExprLeft string, fieldExprRight string, op operand) main.Rule {
 	return crossFieldCompareRule{
 		fieldExprLeft:  fieldExprLeft,
 		fieldExprRight: fieldExprRight,

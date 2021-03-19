@@ -1,4 +1,4 @@
-package checker
+package module
 
 // Rule represents the restriction
 // of param should obey
